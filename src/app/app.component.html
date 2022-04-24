@@ -1,16 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Product Management</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="container-fluid px-5">
+    <a class="navbar-brand" routerLink="/home">Product Management</a>
+    <div class="collapse justify-content-end navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/products">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/users">Users</a>
-        </li>
         <li class="nav-item" *ngIf="!createOrder">
-          <button class=" pr-5 text-right btn btn-success" (click)="createOrder=true" >Create Order</button>
+          <button class="btn btn-success" (click)="createOrder=true" >Create Order</button>
         </li>
       </ul>
     </div>
@@ -18,11 +12,13 @@
 </nav>
 
 <div class="container d-flex" *ngIf="!createOrder">
-  <div class="col-6">
+  <div class="col-6 mt-2">
+    <h3 class="mx-3">Products List</h3>
     <app-product [products]="products"></app-product>
   </div>
 
-  <div class="col-6">
+  <div class="col-6 mt-2">
+    <h3 class="mx-3">Users List</h3>
     <app-user [users]="users"></app-user>
   </div>
 </div>

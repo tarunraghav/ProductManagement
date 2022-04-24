@@ -1,1 +1,114 @@
-<p>create-order works!</p>
+<div class="container" *ngIf="!orderCreated">
+    <div class="heading my-3">
+        Create your order
+    </div>
+    <div class="form-group mb-2 col-4">
+        <select class="form-select" [(ngModel)]="selectedUser">
+            <option selected disabled value="">Select user</option>
+            <option *ngFor="let user of users" [value]="user.name">{{user.name}}</option>
+        </select>
+    </div>
+    <div class="col-12">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of orderList">
+                <th scope="row">
+                    <div class="form-group mb-2">
+                        <select class="form-select"(change)="onProductChange(row)" [(ngModel)]="row.product">
+                            <option selected disabled value="">Select product</option>
+                            <option *ngFor="let product of products" [value]="product.name">{{product.name}}</option>
+                        </select>
+                    </div>
+                </th>
+                <td class="vertical-align">
+                    <div class="mb-2">
+                        <span class="text-black">{{row.price}}</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group mb-2">
+                        <input type="input" class="form-control" placeholder="Enter quantity" [(ngModel)]="row.quantity" (input)="calculateAmount(row)">
+                        <span class="text-danger" *ngIf="row.error && row.error.length > 0">{{row.error}}</span>
+                    </div>
+                </td>
+                <td class="vertical-align">
+                    <div class="mb-2">
+                        <span class="text-black" >{{row.amount}}</span>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="4" class="footer-align">
+                        {{total}}
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-primary" (click)="addItem()">Add Item</button>
+        </div>
+    </div>
+    <div class="btn-group float-end">
+        <button type="button" class="btn btn-sm btn-primary" [disabled]="total<=0" (click)="orderPlaced()">Place Order</button>
+    </div>
+</div>
+
+<div class="container" *ngIf="orderCreated">
+    <div class="heading my-3 text-success">
+        Congratulations!! {{selectedUser}}. Your order is successfully created.
+    </div>
+    <div class="col-12">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of orderList">
+                <th scope="row" class="vertical-align">
+                    <div class="mb-2">
+                        <span class="text-black">{{row.product}}</span>
+                    </div>
+                </th>
+                <td class="vertical-align">
+                    <div class="mb-2">
+                        <span class="text-black">{{row.price}}</span>
+                    </div>
+                </td>
+                <td class="vertical-align">
+                    <div class="mb-2">
+                        <span class="text-black">{{row.quantity}}</span>
+                    </div>
+                </td>
+                <td class="vertical-align">
+                    <div class="mb-2">
+                        <span class="text-black">{{row.amount}}</span>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="3"></th>
+                    <th>
+                        {{total}}
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
