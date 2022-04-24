@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-create-order',
@@ -18,6 +18,7 @@ export class CreateOrderComponent implements OnInit {
   }]
   total: number = 0
   orderCreated: boolean = false
+  @Output() backEvent = new EventEmitter<boolean>()
   constructor() { }
 
   ngOnInit(): void {
@@ -56,5 +57,8 @@ export class CreateOrderComponent implements OnInit {
 
   orderPlaced = () => {
     this.orderCreated = true
+  }
+  back = () =>{
+    this.backEvent.emit(false);
   }
 }

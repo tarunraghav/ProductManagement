@@ -59,7 +59,8 @@
         <button type="button" class="btn btn-sm btn-primary" (click)="addItem()">Add Item</button>
         </div>
     </div>
-    <div class="btn-group float-end">
+    <div class="btn-group float-end mt-3">
+        <button type="button" class="btn btn-sm mx-3 btn-primary" (click)="back()">Back</button>
         <button type="button" class="btn btn-sm btn-primary" [disabled]="total<=0" (click)="orderPlaced()">Place Order</button>
     </div>
 </div>
