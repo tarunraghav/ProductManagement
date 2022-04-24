@@ -1,0 +1,24 @@
+{
+    "users": [
+        {
+            "name": "Vinay",
+            "address": "Indore, MP", 
+            "mobile": 9875636543
+        },
+        {
+            "name": "Ajay", 
+            "address": "Amritsar, Punjab", 
+            "mobile": 9875623456
+        },
+        {
+            "name": "Aditya", 
+            "address": "Noida , UP", 
+            "mobile": 9875636474
+        },
+        {
+            "name": "Shivam", 
+            "address": "Jaipur , Rajasthan", 
+            "mobile": 9875698764
+        }
+    ]
+}

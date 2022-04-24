@@ -1,1 +1,36 @@
-<p>user works!</p>
+<div class="col px-3 py-3" *ngFor="let user of users; let i=index;">
+    <div class="card shadow-sm">
+        <div class="card-body" *ngIf="!user.edit">
+            <p class="card-text">{{user.name}}</p>
+            <span class="card-text">Address: {{user.address}}</span>
+            <span class="card-text px-3">Mobile No: {{user.mobile}}</span>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-danger" (click)="deleteUser(i)">Delete</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" (click)="user.edit=true">Edit</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body" *ngIf="user.edit">
+            <div class="form-group mb-2">
+                <input type="input" class="form-control" [(ngModel)]="user.name">
+            </div>
+            <div class="form-group mb-2">
+                <input type="input" class="form-control" [(ngModel)]="user.address">
+            </div>
+            <div class="form- mb-2">
+                <input type="input" class="form-control" [(ngModel)]="user.mobile">
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="btn-group">
+                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Cancel</button> -->
+                    <button type="button" class="btn btn-sm btn-success" (click)="user.edit=false">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="btn-group px-3">
+    <button type="button" class="btn btn-sm btn-primary" (click)="addUser()">Add User</button>
+</div>
