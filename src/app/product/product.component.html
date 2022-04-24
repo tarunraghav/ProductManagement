@@ -13,13 +13,13 @@
         </div>
         <div class="card-body" *ngIf="product.edit">
             <div class="form-group mb-2">
-                <input type="input" class="form-control" [(ngModel)]="product.name">
+                <input type="input" placeholder="Enter Name" class="form-control" [(ngModel)]="product.name">
             </div>
             <div class="form-group mb-2">
-                <input type="input" class="form-control" [(ngModel)]="product.price">
+                <input type="input" placeholder="Enter Price" class="form-control" [(ngModel)]="product.price">
             </div>
             <div class="form- mb-2">
-                <input type="input" class="form-control" [(ngModel)]="product.stock">
+                <input type="input" placeholder="Enter Stock" class="form-control" [(ngModel)]="product.stock">
             </div>
             <div class="d-flex justify-content-between align-items-center mt-3">
                 <div class="btn-group">
